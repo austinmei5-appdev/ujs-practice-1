@@ -9,7 +9,7 @@
       </li>
     <% end %>
 
-    <% current_user.own_tasks.each do |task| %>
+    <% list.each do |task| %>
       <li class="list-group-item"><%= task.text %></li>
     <% end %>
   </ul>

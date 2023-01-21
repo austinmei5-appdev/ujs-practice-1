@@ -21,4 +21,6 @@ class Task < ApplicationRecord
   belongs_to :owner, class_name: "User"
 
   enum status: { not_yet_started: "Not yet started", in_progress: "In progress", completed: "Completed" }
+
+  validates 
 end
