@@ -1,0 +1,14 @@
+<div class="card" >
+  <div class="card-header">
+    <%= title %>
+  </div>
+  <ul class="list-group list-group-flush">
+    <% if title === "Not yet started" %>
+      <li class="list-group-item">Hello there</li>
+    <% end %>
+
+    <% current_user.own_tasks.each do |task| %>
+      <li class="list-group-item"><%= task.text %></li>
+    <% end %>
+  </ul>
+</div>
