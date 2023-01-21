@@ -16,10 +16,17 @@
 
     <div class="container">
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if notice.present? %>
+        <%= render "shared/flash", message: notice, css_class: "success" %>
+      <% end %>
+
+      <% if alert.present? %>
+        <%= render "shared/flash", message: alert, css_class: "danger" %>
+      <% end %>
 
       <%= yield %>
+
+      <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 
     </div>
   </body>

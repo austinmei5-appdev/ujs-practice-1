@@ -24,4 +24,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :own_tasks, class_name: "Task", foreign_key: "owner_id"
+  # has_many :not_yet_started, -> { where(status: "Not yet started") }, class_name: "Task", foreign_key: "owner_id"
+  # has_many :in_progress, -> { where(status: "In progress") }, class_name: "Task", foreign_key: "owner_id"
+  # has_many :completed, -> { where(status: "Completed") }, class_name: "Task", foreign_key: "owner_id"
 end

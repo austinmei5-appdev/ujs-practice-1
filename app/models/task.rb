@@ -3,8 +3,8 @@
 # Table name: tasks
 #
 #  id         :bigint           not null, primary key
-#  status     :string           default("Not yet started")
-#  text       :string
+#  status     :string           default("not_yet_started")
+#  text       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  owner_id   :bigint           not null
@@ -19,4 +19,8 @@
 #
 class Task < ApplicationRecord
   belongs_to :owner, class_name: "User"
+
+  enum status: { not_yet_started: "Not yet started", in_progress: "In progress", completed: "Completed" }
+
+  validates :text, presence: true
 end

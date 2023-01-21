@@ -1,4 +1,53 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col">
+    <div class="card" >
+      <div class="card-header">
+        Not yet started
+      </div>
+      <ul class="list-group list-group-flush">
+
+        <%= render "form", task: Task.new %>
+
+
+        <% current_user.own_tasks.not_yet_started.each do |task| %>
+          <%= render "task", task: task %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card" >
+      <div class="card-header">
+        In progress
+      </div>
+      <ul class="list-group list-group-flush">
+        <% current_user.own_tasks.in_progress.each do |task| %>
+          <%= render "task", task: task %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card" >
+      <div class="card-header">
+        Completed
+      </div>
+      <ul class="list-group list-group-flush">
+        <% current_user.own_tasks.completed.each do |task| %>
+          <%= render "task", task: task %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!--- 
+
+
+
 
 <h1>Tasks</h1>
 
@@ -29,3 +78,5 @@
 <br>
 
 <%= link_to 'New Task', new_task_path %>
+
+--->
