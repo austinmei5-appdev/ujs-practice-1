@@ -11,22 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_field :text %>
+  <div class="mb-2">
+    <%= form.label :text, class: "visually-hidden" %>
+    <%= form.text_field :text, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :owner_id %>
-    <%= form.text_field :owner_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div>
+    <%= form.submit class: "btn btn-outline-primary btn-block w-100" %>
   </div>
 <% end %>
