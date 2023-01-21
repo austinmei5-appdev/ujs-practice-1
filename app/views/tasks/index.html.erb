@@ -1,12 +1,45 @@
 <div class="row">
   <div class="col">
-    <%= render "card_task", title: "Not yet started", list: current_user.own_tasks.not_yet_started %>
+    <div class="card" >
+      <div class="card-header">
+        Not yet started
+      </div>
+      <ul class="list-group list-group-flush">
+
+        <%= render "form", task: Task.new %>
+
+
+        <% current_user.own_tasks.not_yet_started.each do |task| %>
+          <%= render "card_item", task: task %>
+        <% end %>
+      </ul>
+    </div>
   </div>
+
   <div class="col">
-    <%= render "card_task", title: "In progress", list: current_user.own_tasks.in_progress %>
+    <div class="card" >
+      <div class="card-header">
+        In progress
+      </div>
+      <ul class="list-group list-group-flush">
+        <% current_user.own_tasks.in_progress.each do |task| %>
+          <%= render "card_item", task: task %>
+        <% end %>
+      </ul>
+    </div>
   </div>
+
   <div class="col">
-    <%= render "card_task", title: "Completed", list: current_user.own_tasks.completed %>
+    <div class="card" >
+      <div class="card-header">
+        Completed
+      </div>
+      <ul class="list-group list-group-flush">
+        <% current_user.own_tasks.completed.each do |task| %>
+          <%= render "card_item", task: task %>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
 
