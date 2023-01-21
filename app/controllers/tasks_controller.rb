@@ -19,7 +19,7 @@ class TasksController < ApplicationController
   def edit
     respond_to do |format|
       format.html
-      format.js
+      format.js { render "tasks/edit"}
     end
   end
 
@@ -46,7 +46,7 @@ class TasksController < ApplicationController
       if @task.update(task_params)
         format.html { redirect_to root_url, notice: "Task was successfully updated." }
         format.json { render :show, status: :ok, location: @task }
-        format.js
+        format.js { render "tasks/update" }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @task.errors, status: :unprocessable_entity }

@@ -1,1 +1,3 @@
-$("#<%= dom_id(@task) %>").replaceWith("<%= j(render @task) %>");
+console.log("<%= dom_id(@task) %>");
+
+$("#<%= dom_id(@task) %>_update_form").replaceWith("<%= j(render "tasks/task", task: @task) %>");
