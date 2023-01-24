@@ -1,0 +1,7 @@
+var task = $("#<%= dom_id(@task) %>");
+
+
+$("#<%= @task.status %>_col").after(task);
+
+$("#<%= dom_id(@comment) %>").replaceWith("<%= j(render "comments/form", comment: @comment) %>");
+

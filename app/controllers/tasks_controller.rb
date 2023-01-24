@@ -19,7 +19,7 @@ class TasksController < ApplicationController
   def edit
     respond_to do |format|
       format.html
-      format.js { render "tasks/edit"}
+      format.js
     end
   end
 
@@ -46,7 +46,7 @@ class TasksController < ApplicationController
       if @task.update(task_params)
         format.html { redirect_to root_url, notice: "Task was successfully updated." }
         format.json { render :show, status: :ok, location: @task }
-        format.js { render "tasks/update" }
+        format.js
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -61,6 +61,17 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: "Task was successfully destroyed." }
       format.json { head :no_content }
+      format.js
+    end
+  end
+
+  def shift
+    @task = Task.find(params.fetch(:id))
+    @task.status = params.fetch(:status)
+    @task.save
+
+    respond_to do |format|
+      format.html
       format.js
     end
   end
