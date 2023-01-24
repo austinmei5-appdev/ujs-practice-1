@@ -1,21 +1,7 @@
 <li id="<%= dom_id(task) %>" class="list-group-item">
   <%= task.text %>
   <div class="row text-center mt-1 mb-1">
-    <div id="<%= dom_id(task) %>_link" class="col">
-      <% if task.status === "not_yet_started" %>
-        <%= link_to shift_path(task, status: :in_progress), method: :patch, class: "btn btn-link", remote: true do %>
-          <i class="fa-solid fa-play"></i>
-        <% end %>
-      <% elsif task.status === "in_progress" %>
-        <%= link_to shift_path(task, status: :completed), method: :patch, class: "btn btn-link", remote: true do %>
-          <i class="fa-regular fa-circle-check"></i>
-        <% end %>
-      <% elsif task.status === "completed" %>
-        <%= link_to shift_path(task, status: :in_progress), method: :patch, class: "btn btn-link", remote: true do %>
-          <i class="fa-solid fa-backward"></i>
-        <% end %>
-      <% end %>
-    </div>
+    <%= render "icon", task: task %>
 
     <div class="col">
       <%= link_to edit_task_path(task), class: "btn btn-link", remote: true do %>

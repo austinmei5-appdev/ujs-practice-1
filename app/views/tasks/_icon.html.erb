@@ -1,27 +1,15 @@
-<li id="<%= dom_id(task) %>_update_form" class="list-group-item">
-  <%= form_with(model: task, local: false) do |form| %>
-    <% if task.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
-        <ul>
-          <% task.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
-      </div>
+<div id="<%= dom_id(task) %>_link" class="col">
+  <% if task.status === "not_yet_started" %>
+    <%= link_to shift_path(task, status: :in_progress), method: :patch, class: "btn btn-link", remote: true do %>
+      <i class="fa-solid fa-play"></i>
     <% end %>
-
-    <%= form.hidden_field :status %>
-
-    <div class="mb-2">
-      <%= form.label :text, class: "visually-hidden" %>
-      <%= form.text_field :text, class: "form-control" %>
-    </div>
-
-    <div>
-      <%= form.submit class: "btn btn-outline-primary btn-block w-100" %>
-    </div>
+  <% elsif task.status === "in_progress" %>
+    <%= link_to shift_path(task, status: :completed), method: :patch, class: "btn btn-link", remote: true do %>
+      <i class="fa-regular fa-circle-check"></i>
+    <% end %>
+  <% elsif task.status === "completed" %>
+    <%= link_to shift_path(task, status: :in_progress), method: :patch, class: "btn btn-link", remote: true do %>
+      <i class="fa-solid fa-backward"></i>
+    <% end %>
   <% end %>
-
-</li>
+</div>
