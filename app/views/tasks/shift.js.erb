@@ -1,0 +1,5 @@
+var task = $("#<%= dom_id(@task) %>");
+
+$("#<%= @task.status %>_col").append(task);
+
+$("#<%= dom_id(@task) %>_link").replaceWith("<%= j(render "tasks/icon", task: @task) %>");

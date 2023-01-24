@@ -4,12 +4,11 @@
       <div class="card-header">
         Not yet started
       </div>
-      <ul class="list-group list-group-flush">
-
+      
+      <ul id="not_yet_started_col" class="list-group list-group-flush">
         <%= render "form", task: Task.new %>
 
-
-        <% current_user.own_tasks.not_yet_started.each do |task| %>
+        <% current_user.own_tasks.not_yet_started.order(updated_at: :desc).each do |task| %>
           <%= render "task", task: task %>
         <% end %>
       </ul>
@@ -21,11 +20,13 @@
       <div class="card-header">
         In progress
       </div>
-      <ul class="list-group list-group-flush">
+
+      <ul id="in_progress_col" class="list-group list-group-flush">
         <% current_user.own_tasks.in_progress.each do |task| %>
           <%= render "task", task: task %>
         <% end %>
       </ul>
+
     </div>
   </div>
 
@@ -34,7 +35,7 @@
       <div class="card-header">
         Completed
       </div>
-      <ul class="list-group list-group-flush">
+      <ul id="completed_col" class="list-group list-group-flush">
         <% current_user.own_tasks.completed.each do |task| %>
           <%= render "task", task: task %>
         <% end %>

@@ -1,11 +1,7 @@
 <li id="<%= dom_id(task) %>" class="list-group-item">
   <%= task.text %>
   <div class="row text-center mt-1 mb-1">
-    <div class="col">
-      <%= link_to root_url, class: "btn btn-link" do %>
-        <i class="fa-solid fa-play"></i>
-      <% end %>
-    </div>
+    <%= render "icon", task: task %>
 
     <div class="col">
       <%= link_to edit_task_path(task), class: "btn btn-link", remote: true do %>
